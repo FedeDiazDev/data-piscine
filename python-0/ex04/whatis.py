@@ -6,6 +6,7 @@ def main():
         return
     try:
         assert len(sys.argv) == 2, "more than one argument is provided"
+        assert sys.argv[1].isdigit(), "argument is not an integer"
         num = int(sys.argv[1])
         if (num % 2):
             print("I'm Odd")
@@ -13,8 +14,6 @@ def main():
             print("I'm Even")
     except AssertionError as error:
         print(f"AssertionError: {error}")
-    except ValueError:
-        print("AssertionError: argument is not an integer")
 
 
 if __name__ == "__main__":
