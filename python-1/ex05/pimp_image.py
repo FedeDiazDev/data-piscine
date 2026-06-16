@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image
 
 
-def _display_image(array, title):
+def display_image(array, title):
     """Displays a transformed image using the default image viewer."""
     try:
         Image.fromarray(array).show(title=title)
@@ -15,7 +15,7 @@ def ft_invert(array):
     if array is None:
         return None
     inverted = 255 - array
-    _display_image(inverted, "Invert")
+    display_image(inverted, "Invert")
     return inverted
 
 def ft_red(array):
@@ -24,7 +24,7 @@ def ft_red(array):
         return None
     red_filter = np.array([1, 0, 0], dtype=array.dtype)
     red = array * red_filter
-    _display_image(red, "Red")
+    display_image(red, "Red")
     return red
 
 def ft_green(array):
@@ -34,7 +34,7 @@ def ft_green(array):
     green_img = array.copy()
     green_img[:, :, 0] = green_img[:, :, 0] - green_img[:, :, 0]
     green_img[:, :, 2] = green_img[:, :, 2] - green_img[:, :, 2]
-    _display_image(green_img, "Green")
+    display_image(green_img, "Green")
     return green_img
 
 def ft_blue(array):
@@ -44,7 +44,7 @@ def ft_blue(array):
     blue_img = array.copy()
     blue_img[:, :, 0] = 0
     blue_img[:, :, 1] = 0
-    _display_image(blue_img, "Blue")
+    display_image(blue_img, "Blue")
     return blue_img
 
 def ft_grey(array):
@@ -53,5 +53,5 @@ def ft_grey(array):
         return None
     grey = np.mean(array, axis=2, keepdims=True).astype(array.dtype)
     grey_img = np.repeat(grey, 3, axis=2)
-    _display_image(grey_img, "Grey")
+    display_image(grey_img, "Grey")
     return grey_img
